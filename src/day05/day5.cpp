@@ -10,19 +10,43 @@
 #include <map>
 #include <queue>
 #include "md5.h"
+#include <omp.h>
 
+struct hash_t{
+    int pos;
+    char c;
+};
 
 auto part1(const std::string& in)
 {
-    int i = 0;
     std::string password;
-    while(password.size() < 8){
+    std::vector<std::vector<hash_t>> per_thread(omp_get_max_threads(), std::vector<hash_t>());
+
+    #pragma omp parallel for 
+    for(int i=0; i<9000000; ++i){
         std::string s = in + std::to_string(i);
         std::string h = md5(s);
         if(h[0] == '0' && h[1] == '0' && h[2] == '0' && h[3] == '0' && h[4] == '0'){
-            password += h[5];
+            per_thread[omp_get_thread_num()].push_back({i, h[5]});
         }
-        i++;
+    }
+
+    std::vector<hash_t> all_hashes;
+    for(auto& hashes : per_thread){
+        for(auto& hash : hashes){
+            all_hashes.push_back(hash);
+        }
+    }
+
+    std::sort(all_hashes.begin(), all_hashes.end(), [](auto& a,auto& b){
+        return a.pos < b.pos;
+    });
+
+    for(auto& hash : all_hashes){
+        password += hash.c;
+        if(password.size() == 8){
+            return password;
+        }
     }
 
     return password;
