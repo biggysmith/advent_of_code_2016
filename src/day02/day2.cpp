@@ -39,7 +39,6 @@ auto part1(const std::vector<std::string>& lines)
             }
         }
 
-        //code += std::to_string(pos + 1);
         code += (pos+1)+'0';
     }
 
