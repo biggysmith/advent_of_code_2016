@@ -25,7 +25,9 @@ auto part1(const std::string& in)
     #pragma omp parallel for 
     for(int i=0; i<9000000; ++i){
         std::string s = in + std::to_string(i);
-        std::string h = md5(s);
+        md5_hash md5;
+        md5.append((uint8_t*)s.data(),s.size());
+        std::string h = md5.str();
         if(h[0] == '0' && h[1] == '0' && h[2] == '0' && h[3] == '0' && h[4] == '0'){
             per_thread[omp_get_thread_num()].push_back({i, h[5]});
         }
@@ -67,7 +69,9 @@ auto part2(const std::string& in)
     #pragma omp parallel for 
     for(int i=0; i<28000000; ++i){
         std::string s = in + std::to_string(i);
-        std::string h = md5(s);
+        md5_hash md5;
+        md5.append((uint8_t*)s.data(),s.size());
+        std::string h = md5.str();
         if(h[0] == '0' && h[1] == '0' && h[2] == '0' && h[3] == '0' && h[4] == '0'){
             if(isdigit(h[5]) && (h[5]-'0') < 8){
                 per_thread[omp_get_thread_num()].push_back({i, h[5]-'0', h[6]});
