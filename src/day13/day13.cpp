@@ -82,7 +82,6 @@ auto process(int fav_number, const pos_t& dst)
 
 void main()
 {
-
     auto p1 = process(10, {7,4});
     auto p2 = process(1350, {31,39});
 
