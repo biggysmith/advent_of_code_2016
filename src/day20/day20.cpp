@@ -67,9 +67,9 @@ auto process(const std::vector<range_t>& in, size_t mx)
         intervals.insert({range.low,range.high});
     }
 
-    size_t free = mx + 1ull;
+    size_t free = mx;
     for(auto& [low,high] : intervals.ranges){
-        free -= high - low;
+        free -= std::min(high,mx) - std::min(low,mx);
     }
 
     return std::make_pair(intervals.ranges.begin()->second, free);
@@ -80,7 +80,7 @@ void main()
     auto test_values = load_input("../src/day20/example_input.txt");
     auto actual_values = load_input("../src/day20/input.txt");
 
-    auto part1 = process(test_values, 9);
+    auto part1 = process(test_values, 10);
     auto part2 = process(actual_values, UINT_MAX);
 
     std::cout << "part1: " << part1.first << std::endl;
