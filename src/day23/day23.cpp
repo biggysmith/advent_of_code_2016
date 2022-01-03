@@ -14,7 +14,6 @@ struct instruction_t{
     std::string op;
     std::string x;
     std::string y;
-    std::string z;
 };
 
 std::vector<instruction_t> load_input(const std::string& file){
@@ -25,7 +24,7 @@ std::vector<instruction_t> load_input(const std::string& file){
     while(std::getline(fs, line)){
         std::stringstream ss(line);
         instruction_t ins;
-        ss >> ins.op >> ins.x >> ins.y >> ins.z;
+        ss >> ins.op >> ins.x >> ins.y;
         ret.push_back(ins);
     }    
     return ret;
