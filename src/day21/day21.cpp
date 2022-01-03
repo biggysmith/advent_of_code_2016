@@ -70,7 +70,7 @@ void rotate_left(std::string& code, const std::string& x, const std::string& y){
 }
 
 void rotate_right(std::string& code, const std::string& x, const std::string& y){
-    std::rotate(code.begin(), code.begin()+mod(code.size()-std::stoi(x), (int)code.size()), code.end());
+    std::rotate(code.begin(), code.begin()+mod((int)code.size()-std::stoi(x), (int)code.size()), code.end());
 }
 
 void reverse(std::string& code, const std::string& x, const std::string& y){
