@@ -81,39 +81,6 @@ struct program_t
                 }
             }
 
-            /*if(ins.op == "cpy"){
-                //regs[ins.y] = get(ins.x);
-                std::cout << "regs[" + ins.y + "] = get(" + ins.x + ");" << std::endl;
-            }else if(ins.op == "inc"){
-                //regs[ins.x] ++;
-                std::cout << "regs[" + ins.x + "]++;" << std::endl;
-            }else if(ins.op == "dec"){
-                //regs[ins.x] --;
-                std::cout << "regs[" + ins.x + "]--;" << std::endl;
-            }else if(ins.op == "tgl"){
-                auto jmp = get(ins.x);
-                if(ipos+jmp < instructions.size()){
-                    auto& ins = instructions[ipos+jmp];
-                    if(ins.op == "inc"){
-                        ins.op = "dec";
-                    }else if(ins.op == "dec"){
-                        ins.op = "inc";
-                    }else if(ins.op == "tgl"){
-                        ins.op = "inc";
-                    }else if(ins.op == "jnz"){
-                        ins.op = "cpy";
-                    }else if(ins.op == "cpy"){
-                        ins.op = "jnz";
-                    }
-                }
-            }else if(ins.op == "jnz"){
-                std::cout << "if(get(" + ins.x + ") != 0;" << std::endl;
-                if(get(ins.x) != 0){
-                    //ipos += get(ins.y) - 1;
-                    std::cout << "ipos += get(" + ins.y + ") -1;" << std::endl;
-                }
-            }*/
-
             ipos++;
         }
     }
