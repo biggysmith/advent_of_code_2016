@@ -44,16 +44,16 @@ std::string md5(const std::string& s){
     return md5.str();
 }
 
-auto dijkstra(const path_t& src, const path_t& dst)
+auto bfs(const path_t& src, const path_t& dst)
 {
-    std::priority_queue<path_t> q;
+    std::queue<path_t> q;
     q.push(src);
 
     std::string shortest;
     int max_dist = 0;
 
     while (!q.empty()) {
-        auto curr = q.top();
+        auto curr = q.front();
         q.pop();
 
         if(curr.pos == dst.pos){
@@ -104,7 +104,7 @@ auto dijkstra(const path_t& src, const path_t& dst)
 
 auto process(const std::string& pass)
 {
-    return dijkstra({pass,{0,0}}, {"",{3,3}});
+    return bfs({pass,{0,0}}, {"",{3,3}});
 }
 
 void main()
