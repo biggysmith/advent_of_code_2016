@@ -43,7 +43,7 @@ struct interval_set
         }   
         else {
             insert_range = std::prev(after);
-            if (insert_range->second+1 >= range.high+1) {
+            if (insert_range->second >= range.high+1) {
                 return;
             }   
             else {
@@ -57,10 +57,8 @@ struct interval_set
         }   
     }
 
-    std::map<size_t,size_t> ranges;
+    std::map<size_t,size_t> ranges; // stupid std::set iterators are not mutable, so lets abuse map
 };
-
-
 
 auto process(const std::vector<range_t>& in, size_t mx)
 {
