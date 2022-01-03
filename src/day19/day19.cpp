@@ -34,9 +34,9 @@ auto circular_erase(T& list,It iter){
 
 auto part1(int num_elfs)
 {
-    std::list<std::pair<int,int>> elfs;
+    std::list<int> elfs;
     for(int i=0; i<num_elfs; ++i){
-        elfs.push_back({i+1, i+1});
+        elfs.push_back(i+1);
     }
 
     auto current = elfs.begin();
@@ -46,14 +46,14 @@ auto part1(int num_elfs)
         current = circular_erase(elfs,it);
     }
 
-    return elfs.begin()->first;
+    return elfs.front();
 }
 
 auto part2(int num_elfs)
 {
-    std::list<std::pair<int,int>> elfs;
+    std::list<int> elfs;
     for(int i=0; i<num_elfs; ++i){
-        elfs.push_back({i+1, i+1});
+        elfs.push_back(i+1);
     }
 
     auto mid = elfs.begin();
@@ -66,7 +66,7 @@ auto part2(int num_elfs)
         }
     }
 
-    return elfs.front().first;
+    return elfs.front();
 }
 
 void main()
