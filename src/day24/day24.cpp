@@ -64,9 +64,6 @@ auto find_shortest_path(const grid_t& grid, const pos_t& src, const pos_t& dst)
 
     std::set<pos_t> visited;
 
-    std::map<pos_t,int> dist;
-    dist[src] = 0;
-
     while (!q.empty()) {
         auto curr = q.top();
         q.pop();
